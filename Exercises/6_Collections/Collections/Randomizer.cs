@@ -10,7 +10,7 @@ internal static class Randomizer
     {
         return new Bogus.Faker().Random.Int(start, end);
     }
-    public static float RandomFloat(int start = 0, int end = int.MaxValue)
+    public static float RandomFloat(int start = 0, int end = 1)
     {
         return new Bogus.Faker().Random.Float(start, end);
     }

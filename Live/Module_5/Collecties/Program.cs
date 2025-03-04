@@ -1,4 +1,6 @@
-﻿namespace Collecties;
+﻿using System.Collections;
+
+namespace Collecties;
 
 class Program
 {
@@ -32,7 +34,62 @@ class Program
 
         System.Console.WriteLine(nummers.Length);
     
+        for(int idx = 0; idx < nummers.Length; idx++)
+        {
+            int item = nummers[idx];
+            Console.Write($"{item}, ");
+        }
+        System.Console.WriteLine();
+
+        foreach(int item in nummers)
+        {
+            Console.Write($"{item}, ");
+        }
+
+        // OUWE MEUK. NIET GEBRUIKEN
+        ArrayList lijst = new ArrayList();
+        lijst.Add(1);
+        lijst.Add("twee");
+        lijst.Add(3.0);
+        lijst.Add(true);
+
+        // foreach(int item in lijst)
+        // {
+        //     Console.WriteLine(item);
+        // }
+
+        List<int> list = new List<int>();
+        list.Add(1);
+        list.Add(2);
+        list.Add(3);
+        //list.Add("4");
+
+        foreach(int item in list)
+        {
+            Console.WriteLine(item);
+        }
 
 
+        // Dictionary
+        Dictionary<string, int> dict = new Dictionary<string, int>();
+        dict.Add("een", 1);
+        dict.Add("twee", 2);
+        dict.Add("drie", 3);
+
+        Console.WriteLine(dict["twee"]);
+
+        foreach(KeyValuePair<string, int> kvp in dict)
+        {
+            Console.WriteLine($"{kvp.Key} = {kvp.Value}");
+        }
+        foreach(int item in dict.Values)
+        {
+            Console.WriteLine(item);
+        }   
+        // for(int idx = 0; idx < dict.Count; idx++)
+        // {
+        //     KeyValuePair<string, int> kvp = dict.ElementAt(idx);
+        //     Console.WriteLine($"{kvp.Key} = {kvp.Value}");
+        // }
     }
 }
