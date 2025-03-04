@@ -1,0 +1,24 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.2.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JumpBack", "JumpBack.csproj", "{2203D8FE-647F-2746-68E8-D4F8D58039BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2203D8FE-647F-2746-68E8-D4F8D58039BB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2203D8FE-647F-2746-68E8-D4F8D58039BB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2203D8FE-647F-2746-68E8-D4F8D58039BB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2203D8FE-647F-2746-68E8-D4F8D58039BB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4982D847-5C7B-4236-B099-663FF8998996}
+	EndGlobalSection
+EndGlobal
