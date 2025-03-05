@@ -22,5 +22,24 @@ class Car
     private int currentSpeed;
     private int maximumSpeed = 220;
 
+    public void SpeedUp()
+    {
+        if (currentSpeed < maximumSpeed)
+        {
+            currentSpeed++;
+        }
+    }
+    public void Brake()
+    {
+        currentSpeed -= 1;
+    }
+    public void ShowCurrentSpeed()
+    {
+        Console.WriteLine($"De huidige snelheid van de {brand} {model} is {currentSpeed}km/h");
+    }
+    public Car(int maxSpeed)
+    {
+        this.maximumSpeed = maxSpeed;
+    }
 }
 

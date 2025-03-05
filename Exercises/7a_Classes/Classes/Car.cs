@@ -12,3 +12,12 @@
 
 // TODO 4: Declare and initialize two instances of this class where appropriate. 
 // Assign values to the fields and display them.
+
+class Car
+{
+    public string? brand;
+    public string? model;
+    public int productionYear;
+    private int currentSpeed;
+    private  int MaxSpeed = 250;
+}

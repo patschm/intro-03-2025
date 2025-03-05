@@ -13,24 +13,47 @@
 
 class Car
 {
-    public string brand;
-    public string model;
-    public DateTime productionDate;
+    public string Brand { get; set; }
+    public string Model { get; set; }
+    public DateTime ProductionDate { get; set; }
 
     private int currentSpeed;
     private readonly int maximumSpeed;
 
+    public int Age
+    {
+        get
+        {
+            return DateTime.Now.Year - ProductionDate.Year;
+        }
+        
+    }
+    public int CurrentSpeed
+    {
+        get { return currentSpeed; }
+        private set
+        {
+            if (value >= 0 && value < maximumSpeed)
+            {
+                currentSpeed = value;
+            }
+        }
+    }
+
     public void SpeedUp()
     {
-        if (currentSpeed < maximumSpeed) currentSpeed++;
+        if (CurrentSpeed >=0 && CurrentSpeed < maximumSpeed)
+        {
+            CurrentSpeed++;
+        }
     }
     public void Brake()
     {
-        currentSpeed--;
+        CurrentSpeed--;
     }
     public void DisplaySpeed()
     {
-        Console.WriteLine($"Current speed is {currentSpeed}");
+        Console.WriteLine($"Current speed is {CurrentSpeed}");
     }
 
     public Car(int maxSpeed)
