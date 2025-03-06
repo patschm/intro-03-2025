@@ -14,26 +14,41 @@ class Program
         //obj1.hoogte = 100;
         //obj1.breedte = -50;
         obj1.Breedte = -75;
-        System.Console.WriteLine(obj1.Breedte);
-        System.Console.WriteLine(obj1.Oppervlakte);
+        Console.WriteLine(obj1.Breedte);
+        Console.WriteLine(obj1.Oppervlakte);
         //obj1.SetBreedte(-50);
         //System.Console.WriteLine(obj1.GetBreedte());
        // obj1.merknaam = "Radiator";
 
         obj1.VerhoogTemperatuur();
 
-        System.Console.WriteLine(obj1.Temperatuur);
-        System.Console.WriteLine(obj1.Merknaam);
+        //Console.WriteLine(obj1.Temperatuur);
+        Console.WriteLine(obj1.Merknaam);
 
         // Property initializer
         Radiator obj3 = new Radiator{
             Merknaam = "Jaga", 
             Breedte=200, 
             Hoogte=100};
+
+        obj3.VerlaagTemperatuur();
         
-        System.Console.WriteLine(obj3.Merknaam);
+        Console.WriteLine(obj3.Merknaam);
         obj3.VerhoogTemperatuur();
-        System.Console.WriteLine(obj3.Oppervlakte);
+        Console.WriteLine(obj3.Oppervlakte);
+
+        // Dit is nu generaliseren.
+        Radiator obj4 = new ConvectieRadiator
+        {
+            Merknaam = "Jaga",
+            Breedte = 200,
+            Hoogte = 100,
+            VentilatorSnelheid = 500
+        };
+
+        // Ik verdiep mij in het object
+        (obj4 as ConvectieRadiator).VentilatorSnelheid = 800;
+        obj4.VerhoogTemperatuur();
     }
 }
 

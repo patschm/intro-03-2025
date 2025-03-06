@@ -6,7 +6,7 @@ internal class Program
     {
         Canvas canvas = new Canvas();
 
-        Cirkel c1 = new Cirkel();
+        Vorm c1 = new Cirkel();
         c1.Positie = RandomPositie();
         c1.Kleur = ConsoleColor.Red;
         canvas.VoegToe(c1);

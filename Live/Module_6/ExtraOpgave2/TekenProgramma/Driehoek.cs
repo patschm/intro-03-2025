@@ -1,6 +1,6 @@
 ﻿namespace TekenProgramma;
 
-internal class Driehoek
+internal class Driehoek: Vorm
 {
     private int _hoogte;
     private int _basis;
@@ -28,11 +28,9 @@ internal class Driehoek
         }
     }
     public int Hoek { get; set; }
-    public ConsoleColor Kleur { get; set; }
-    public Positie Positie { get; set; }
+   
 
-
-    public void Teken()
+    public override void Teken()
     {
         Console.ForegroundColor = Kleur;
         Console.WriteLine($"Driehoek op ({Positie.Coordinate}) met basis {Basis}, hoogte {Hoogte} en hoek {Hoek}");

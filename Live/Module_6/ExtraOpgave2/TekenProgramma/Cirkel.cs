@@ -1,11 +1,9 @@
 ﻿namespace TekenProgramma;
 
-internal class Cirkel
+internal class Cirkel: Vorm
 {
     private int _straal;
-    public ConsoleColor Kleur { get; set; }
-    public Positie Positie { get; set; }
-
+  
     public int Straal
     {
         get { return _straal; }
@@ -18,7 +16,7 @@ internal class Cirkel
         }
     }
 
-    public void Teken()
+    public override void Teken()
     {
         Console.ForegroundColor = Kleur;
         Console.WriteLine($"Cirkel op ({Positie.Coordinate}) met straal {Straal}");

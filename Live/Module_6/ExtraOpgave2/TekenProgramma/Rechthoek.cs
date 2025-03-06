@@ -1,12 +1,9 @@
 ﻿namespace TekenProgramma;
 
-internal class Rechthoek
+internal class Rechthoek : Vorm
 {
     private int _lengte;
     private int _breedte;
-
-    public ConsoleColor Kleur { get; set; }
-    public Positie Positie { get; set; }
 
     public int Lengte
     {
@@ -31,7 +28,7 @@ internal class Rechthoek
         }
     }
 
-    public void Teken()
+    public override void Teken()
     {
         Console.ForegroundColor = Kleur;
         Console.WriteLine($"Rechthoek op ({Positie.Coordinate}) met lengte {Lengte} en breedte {Breedte}");

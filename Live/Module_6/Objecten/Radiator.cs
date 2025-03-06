@@ -1,6 +1,7 @@
 // This is the blueprint of an object.
 // It is a class that defines the properties and methods of a Radiator object.
 // Radiator is my user-defined data type.
+//abstract class Radiator
 class Radiator
 {
     // Eigenschappen slaan we op in fields.
@@ -17,7 +18,9 @@ class Radiator
 
     // Auto-generated properties
     // Ze genereren een private field achter de schermen.
-    public int Temperatuur { get; set;} = 15;
+    // Met protected geef ik aan dat alleen afgeleide classes 
+    // toegang hebben tot dit property.
+    protected int Temperatuur { get; set;} = 15;
     public string? Merknaam { get; set;}
         
     
@@ -84,12 +87,17 @@ class Radiator
     // Gedrag van een object definieren we op in methods.
     // Methods zijn veredelde functions/procedures.
     // Methods zijn by default private, dus enkel toegankelijk binnen de klasse.
-    public void VerhoogTemperatuur()
+    // Met virtual geef ik aan dat dit GEDRAG!!!! polymorfisch KAN zijn. (Hoeft niet)
+    public virtual void VerhoogTemperatuur()
     {
         Temperatuur++;
         Console.WriteLine($"De tempartuur is nu: {this.Temperatuur}");
     }
-    public void VerlaagTemperatuur()
+    // Met abstract geef ik aan dat dit GEDRAG!!!! polymorfisch MOET
+    // zijn. (Moet overschreven worden in de afgeleide class)
+    // Als je een abstract method hebt, moet de class ook abstract zijn.
+    //public abstract void VerlaagTemperatuur();
+    public virtual void VerlaagTemperatuur()
     {
         Temperatuur--;
         Console.WriteLine($"De tempartuur is nu: {this.Temperatuur}");
