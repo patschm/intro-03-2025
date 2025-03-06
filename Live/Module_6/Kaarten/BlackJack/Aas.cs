@@ -6,7 +6,11 @@ internal class Aas: Kaart
     {
         Console.Write($"[{Symbol} Ace]");
     }
-    public Aas()
+    public void SetMinValue()
+    {
+        FaceValue = 1;
+    }
+    public Aas(char symbol): base(symbol)
     {
         FaceValue = 10;
     }

@@ -6,7 +6,7 @@ internal class Numeriek : Kaart
     {
         Console.Write($"[{Symbol} {FaceValue}]");
     }
-    public Numeriek(int value)
+    public Numeriek(int value, char symbol): base(symbol)
     {
         FaceValue = value;
     }

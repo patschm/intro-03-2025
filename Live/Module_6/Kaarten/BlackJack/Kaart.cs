@@ -5,10 +5,15 @@ internal class Kaart
     private char _symbol;
     private int _faceValue;
 
+    public Kaart(char symbol)
+    {
+        Symbol = symbol;
+    }
+
     protected char Symbol
     { 
         get { return _symbol; } 
-        set { _symbol = value; }
+        private set { _symbol = value; }
     }
     public int FaceValue
     {

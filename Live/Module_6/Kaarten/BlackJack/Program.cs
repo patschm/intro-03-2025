@@ -8,9 +8,13 @@ internal class Program
     {
         Console.OutputEncoding = Encoding.GetEncoding(1200);
 
-        Console.WriteLine('\u2665'); // Heart
-        Console.WriteLine('\u2666'); // Diamond
-        Console.WriteLine('\u2660'); // Spade
-        Console.WriteLine('\u2663'); // Club
+        Speler sp1 = new Speler { Naam = "Erik" };
+        Speler sp2 = new Speler { Naam = "Marlies" };
+        
+        Tafel t1 = new Tafel();
+        t1.MeldAan(sp1);
+        t1.MeldAan(sp2);
+        t1.Beurt();
+
     }
 }

@@ -6,7 +6,7 @@ internal class Vrouw: Kaart
     {
         Console.Write($"[{Symbol} Queen]");
     }
-    public Vrouw()
+    public Vrouw(char symbol) : base(symbol)
     {
         FaceValue = 10;
     }

@@ -6,7 +6,7 @@ internal class Koning: Kaart
     {
         Console.Write($"[{Symbol} King]");
     }
-    public Koning()
+    public Koning(char symbol): base(symbol)
     {
         FaceValue = 10;
     }

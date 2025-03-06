@@ -6,7 +6,7 @@ internal class Boer:Kaart
     {
         Console.Write($"[{Symbol} Jack]");
     }
-    public Boer()
+    public Boer(char symbol): base(symbol) 
 	{
 		FaceValue = 10;
 	}
