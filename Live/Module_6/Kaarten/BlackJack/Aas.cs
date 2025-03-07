@@ -4,7 +4,7 @@ internal class Aas: Kaart
 {
     public override void Toon()
     {
-        Console.Write($"[{Symbol} Ace]");
+        Console.Write($"[{Symbol} A]");
     }
     public void SetMinValue()
     {
@@ -12,6 +12,6 @@ internal class Aas: Kaart
     }
     public Aas(char symbol): base(symbol)
     {
-        FaceValue = 10;
+        FaceValue = 11;
     }
 }

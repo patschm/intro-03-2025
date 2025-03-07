@@ -1,4 +1,6 @@
 ﻿
+
+
 namespace BlackJack;
 
 internal class Speler
@@ -19,7 +21,7 @@ internal class Speler
     }
     public bool IsKapot { get; set; } = false;
     public string? Naam { get; set; }
-    public int StoptBij { get; set; } = 21;
+    public int AutoPassAt { get; set; } = 21;
 
     public void SetBank(Bank bank)
     {
@@ -35,25 +37,15 @@ internal class Speler
         do
         {
             Console.WriteLine("Kaart? (Y/N)");
-            ConsoleKey key = Console.ReadKey().Key;
+            ConsoleKey key = Console.ReadKey(true).Key;
             Console.WriteLine();
             if (key == ConsoleKey.Y)
             {
-                Kaart? k = deler?.GeefKaart();
-                if (k != null)
+                SpeelKaart();
+                bool kanDoor = CanContinue();
+                ToonHand();
+                if (!kanDoor)
                 {
-                    _hand.Add(k);
-                }
-                ShowHand();
-                IsKapot = EvalueerHand();
-                if (IsKapot)
-                {
-                    Console.WriteLine("Kapot");
-                    return;
-                }
-                if (Value >= StoptBij)
-                {
-                    Pas();
                     return;
                 }
             }
@@ -61,14 +53,43 @@ internal class Speler
             {
                 Pas();
                 return;
-            }
-            
-            
+            }        
         }
         while (true);
     }
-
-    private bool EvalueerHand()
+      
+    private bool CanContinue()
+    {
+        // TODO. Her gaat iets mis
+        if (Value == 21)
+        {
+            Pas();
+            return false;
+        }
+        if (Value < 21) return true;
+        IsKapot = HeeftAzen();
+        if (IsKapot)
+        {
+            Console.WriteLine("Kapot");
+            return false;
+        }
+        if (Value >= AutoPassAt)
+        {
+            Pas();
+            return false;
+        }
+        return true;
+    }
+    private void SpeelKaart()
+    {
+        Kaart? k = deler?.GeefKaart();
+        if (k != null)
+        {
+            _hand.Add(k);
+        }
+       
+    }
+    private bool HeeftAzen()
     {
         // Zijn we kapot?
         while (true)
@@ -78,7 +99,7 @@ internal class Speler
             foreach (Kaart k in _hand)
             {
                 Aas? a = k as Aas;
-                if (a != null && a.FaceValue == 10)
+                if (a != null && a.FaceValue == 11)
                 {
                     hasAces = true;
                     a.SetMinValue();
@@ -89,7 +110,7 @@ internal class Speler
             if (!hasAces) return true;
         }
     }
-    private void ShowHand()
+    public void ToonHand()
     {
         foreach (Kaart k in _hand)
         {

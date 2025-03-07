@@ -9,13 +9,13 @@ internal class Bank : Speler
 
     public Bank()
     {
-        StoptBij = 17;
+        AutoPassAt = 17;
         Naam = "Bank";
         SetBank(this);
     }
     public void Shuffle()
     {
-        for (int time = 0; time < 1; time++)
+        for (int time = 0; time < 10; time++)
         {
             for (int val = 1; val <= 52; val++)
             {
@@ -35,20 +35,19 @@ internal class Bank : Speler
     }
     private Kaart CreateKaart(int val, char symbol)
     {
-        int card = val % 14;
+        int card = val % 13;
         switch (card)
         {
-            case 0: return new Aas(symbol);
+            case 1: return new Aas(symbol);
             case 11: return new Boer(symbol);
             case 12: return new Vrouw(symbol);
             case 13: return new Koning(symbol);
             default: return new Numeriek(card,symbol);
         }
     }
-
     private char DetermineSymbol(int val)
     {
-        int isym = val / 14;
+        int isym = val / 13;
         switch (isym) 
         {
             case 0:

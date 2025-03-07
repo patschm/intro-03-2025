@@ -4,7 +4,7 @@ internal class Boer:Kaart
 {
     public override void Toon()
     {
-        Console.Write($"[{Symbol} Jack]");
+        Console.Write($"[{Symbol} J]");
     }
     public Boer(char symbol): base(symbol) 
 	{

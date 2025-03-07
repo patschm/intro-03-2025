@@ -1,6 +1,6 @@
 ﻿namespace BlackJack;
 
-internal class Kaart
+abstract class Kaart
 {
     private char _symbol;
     private int _faceValue;
@@ -21,8 +21,5 @@ internal class Kaart
         protected set { _faceValue = value; }
     }
 
-    public virtual void Toon()
-    {
-
-    }
+    public abstract void Toon();
 }
