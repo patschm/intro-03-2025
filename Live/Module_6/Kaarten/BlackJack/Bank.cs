@@ -15,40 +15,42 @@ internal class Bank : Speler
     }
     public void Shuffle()
     {
-        for (int time = 0; time < 10; time++)
+        for (int val = 0; val < 56; val++)
         {
-            for (int val = 1; val <= 52; val++)
-            {
-                char symbol = DetermineSymbol(val);
-                Kaart kaart = CreateKaart(val, symbol);
-                _stock.Add(kaart);
-            }
+            char symbol = DetermineSymbol(val);
+            Kaart kaart = CreateKaart(val, symbol);
+            if (kaart != null)  _stock.Add(kaart);
         }
     }
-    public Kaart? GeefKaart()
+    public Kaart GeefKaart()
     {
-        if (_stock.Count == 0) return null;
+        if (_stock.Count == 0)
+        {
+            Console.WriteLine("Kaarten zijn op");
+            Shuffle();
+        }
         int idx = _random.Next(0, _stock.Count);
         Kaart card = _stock[idx];
         _stock.Remove(card);
         return card;
     }
-    private Kaart CreateKaart(int val, char symbol)
+    private Kaart? CreateKaart(int val, char symbol)
     {
-        int card = val % 13;
+        int card = val % 14;
         switch (card)
         {
+            case 0: return null;
             case 1: return new Aas(symbol);
             case 11: return new Boer(symbol);
             case 12: return new Vrouw(symbol);
             case 13: return new Koning(symbol);
-            default: return new Numeriek(card,symbol);
+            default: return new Numeriek(card, symbol);
         }
     }
     private char DetermineSymbol(int val)
     {
-        int isym = val / 13;
-        switch (isym) 
+        int isym = val / 14;
+        switch (isym)
         {
             case 0:
                 return '\u2665'; // Heart
@@ -61,5 +63,11 @@ internal class Bank : Speler
             default:
                 return 'x';
         }
+    }
+    public bool WilJeEenKaart()
+    {
+        Console.WriteLine("Kaart? (Y/N)");
+        ConsoleKey key = Console.ReadKey(true).Key;
+        return key == ConsoleKey.Y;
     }
 }

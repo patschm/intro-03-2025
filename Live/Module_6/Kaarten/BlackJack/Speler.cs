@@ -34,62 +34,38 @@ internal class Speler
     }
     public void Speel()
     {
+        if (deler == null) return;
         do
         {
-            Console.WriteLine("Kaart? (Y/N)");
-            ConsoleKey key = Console.ReadKey(true).Key;
-            Console.WriteLine();
-            if (key == ConsoleKey.Y)
-            {
-                SpeelKaart();
-                bool kanDoor = CanContinue();
-                ToonHand();
-                if (!kanDoor)
-                {
-                    return;
-                }
-            }
-            if (key == ConsoleKey.N)
+            bool yn = deler.WilJeEenKaart();
+            if (yn == false)
             {
                 Pas();
                 return;
-            }        
+            }
+            Kaart newKaart = deler.GeefKaart();
+            _hand.Add(newKaart);
+
+            IsKapot = Value > 21;
+            if (IsKapot)
+                IsKapot = CorrigeerVoorAzen();
+            
+            ToonHand();
+            if (IsKapot)
+            {
+                Console.WriteLine($"Speler {Naam} is kapot");
+                return;
+            }
+            if (Value >= AutoPassAt)
+            {
+                Pas();
+                return;
+            }
         }
         while (true);
     }
-      
-    private bool CanContinue()
-    {
-        // TODO. Her gaat iets mis
-        if (Value == 21)
-        {
-            Pas();
-            return false;
-        }
-        if (Value < 21) return true;
-        IsKapot = HeeftAzen();
-        if (IsKapot)
-        {
-            Console.WriteLine("Kapot");
-            return false;
-        }
-        if (Value >= AutoPassAt)
-        {
-            Pas();
-            return false;
-        }
-        return true;
-    }
-    private void SpeelKaart()
-    {
-        Kaart? k = deler?.GeefKaart();
-        if (k != null)
-        {
-            _hand.Add(k);
-        }
-       
-    }
-    private bool HeeftAzen()
+
+    private bool CorrigeerVoorAzen()
     {
         // Zijn we kapot?
         while (true)
@@ -103,10 +79,9 @@ internal class Speler
                 {
                     hasAces = true;
                     a.SetMinValue();
-                    break;
+                    return false;
                 }
             }
-            if (Value <= 21) return false;
             if (!hasAces) return true;
         }
     }
